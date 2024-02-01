@@ -2,11 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
 import '../../../data/constant/endpoint.dart';
+import '../../../data/model/response_get_pinjam.dart';
 import '../../../data/model/response_pinjam.dart';
 import '../../../data/provider/api_provider.dart';
 import '../../../data/provider/storage_provider.dart';
 
-class PeminjamanController extends GetxController with StateMixin<List<DataPinjam>>{
+class PeminjamanController extends GetxController with StateMixin<List<DataGetPinjam>>{
   //TODO: Implement PeminjamanController
 
   final count = 0.obs;
@@ -31,7 +32,7 @@ class PeminjamanController extends GetxController with StateMixin<List<DataPinja
     try {
       final response = await ApiProvider.instance().get(Endpoint.pinjam + "/${StorageProvider.read(StorageKey.idUser)}");
       if (response.statusCode == 200) {
-        final ResponsePinjam responsePinjam = ResponsePinjam.fromJson(response.data);
+        final ResponseGetPinjam responsePinjam = ResponseGetPinjam.fromJson(response.data);
         if(responsePinjam.data!.isEmpty){
           change(null,status: RxStatus.empty());
         }else{

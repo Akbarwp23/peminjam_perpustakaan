@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pemimjam_perpustakaan_kelas_c/app/data/model/response_get_pinjam.dart';
 
 import '../../../data/model/response_pinjam.dart';
 import '../controllers/peminjaman_controller.dart';
@@ -17,7 +18,7 @@ class PeminjamanView extends GetView<PeminjamanController> {
         body: controller.obx((state) => ListView.separated(
           itemCount: state!.length,
           itemBuilder: (context, index){
-            DataPinjam dataPinjam = state[index];
+            DataGetPinjam dataPinjam = state[index];
             return ListTile(
               title: Text("${dataPinjam.book?.judul}"),
               subtitle: Text("Penulis ${dataPinjam.book?.penulis}\n${dataPinjam.tanggalPinjam} - ${dataPinjam.tanggalKembali}"),

@@ -71,8 +71,8 @@ class DataPinjam {
     book = json['book'] != null ? Book.fromJson(json['book']) : null;
   }
   int? id;
-  String? userId;
-  String? bookId;
+  int? userId;
+  int? bookId;
   String? tanggalPinjam;
   String? tanggalKembali;
   String? status;

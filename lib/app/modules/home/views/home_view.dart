@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../data/provider/storage_provider.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
@@ -12,6 +13,45 @@ class HomeView extends GetView<HomeController> {
       appBar: AppBar(
         title: const Text('HomeView'),
         centerTitle: true,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text(
+                "User",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0,),
+              ),
+              accountEmail: Text("@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/logo.png'),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Profil'),
+              onTap: () {
+                // Navigate to appropriate route
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text('Tentang'),
+              onTap: () {
+                // Navigate to appropriate route
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text('Keluar'),
+              onTap: () => {
+                StorageProvider.write(StorageKey.status, ''),
+                Get.toNamed(Routes.LOGIN),
+                Get.snackbar("Success", "Berhasil Logout", backgroundColor: Colors.lightGreen)
+              }, // Navigate to login page
+            ),
+          ],
+        ),
       ),
       body: Container(
         color: Color(0xFF316D80), // Set background color to #316D80
@@ -32,16 +72,14 @@ class HomeView extends GetView<HomeController> {
                     imageAsset: 'assets/buku3.png',
                     buttonText: 'Peminjaman',
                   ),
+                  _buildButtonWithImageAndText(
+                    onPressed: () => Get.toNamed(Routes.KATEGORI),
+                    imageAsset: 'assets/buku3.png',
+                    buttonText: 'Kategori',
+                  ),
                 ],
               ),
               SizedBox(height: 16),
-              _buildButtonWithImageAndText(
-                onPressed: () {
-                  // Navigate to other page here
-                },
-                imageAsset: 'assets/buku2.png',
-                buttonText: 'Other Page',
-              ),
             ],
           ),
         ),

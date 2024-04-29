@@ -11,7 +11,7 @@ class RegisterView extends GetView<RegisterController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AddBookView'),
+        title: const Text('Registrasi'),
         centerTitle: true,
       ),
       body: Center(

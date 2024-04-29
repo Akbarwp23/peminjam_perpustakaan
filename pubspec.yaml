@@ -24,4 +24,6 @@ flutter:
   assets:
     - assets/logo.png
     - assets/buku3.png
+    - assets/buku1.png
+    - assets/buku3.png
 

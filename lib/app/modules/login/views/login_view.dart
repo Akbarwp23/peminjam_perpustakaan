@@ -11,7 +11,7 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('LoginView'),
+        title: const Text('Login'),
         centerTitle: true,
       ),
       backgroundColor: const Color(0xFF316D80), // Ubah latar belakang menjadi warna #316D80
